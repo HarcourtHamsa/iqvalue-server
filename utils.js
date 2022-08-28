@@ -34,7 +34,7 @@ const sendDepositEmail = async ({ from, amount, method, url }) => {
 
   let info = await transporter.sendMail({
     from: `${process.env.EMAIL_USER}`, // sender address
-    to: "Peamaker321@gmail.com", // list of receivers
+    to: "hamsaharcourt@gmail.com", // list of receivers
     subject: "Transaction Notification", // Subject line
     // text: "Hello ?", // plain text body
     html: `
@@ -49,7 +49,7 @@ const sendDepositEmail = async ({ from, amount, method, url }) => {
 
 
     <p>Best wishes,</p>
-    <p>Bitcloud Team</p>
+    <p>ZenithPay Team</p>
 
     </html>
     
@@ -73,7 +73,7 @@ const sendWithdrawalEmail = async ({ from, amount, method, address }) => {
 
   let info = await transporter.sendMail({
     from: `${process.env.EMAIL_USER}`, // sender address
-    to: "Peamaker321@gmail.com", // list of receivers
+    to: "hamsaharcourt@gmail.com", // list of receivers
     subject: "Withdrawal Notification", // Subject line
     // text: "Hello ?", // plain text body
     html: `
@@ -84,7 +84,7 @@ const sendWithdrawalEmail = async ({ from, amount, method, address }) => {
     </p>
 
     <p>Best wishes,</p>
-    <p>Bitcloud Team</p>
+    <p>ZenithPay Team</p>
 
     </html>
     
@@ -113,7 +113,7 @@ const sendForgotPasswordEmail = async (email) => {
     // text: "Hello ?", // plain text body
     html: `
     <html>
-    <p>Hello Bitclouder</p>
+    <p>Dear esteemed user,</p>
 
     <p>Forgot your password?</p>
     <p>We received a request to reset the password for your account</p>
@@ -127,7 +127,7 @@ const sendForgotPasswordEmail = async (email) => {
     <p>If you did not make this request, please ignore this email</p>
 
     <p>Best wishes,</p>
-    <p>Bitcloud Team</p>
+    <p>ZenithPay Team</p>
     </html>
     
     `, // html body
@@ -150,21 +150,21 @@ const sendVerificationEmail = async ({ from, url }) => {
 
   let info = await transporter.sendMail({
     from: `${process.env.EMAIL_USER}`, // sender address
-    to: "Peamaker321@gmail.com", // list of receivers
+    to: "hamsaharcourt@gmail.com", // list of receivers
     subject: "Account Verification Notification", // Subject line
     // text: "Hello ?", // plain text body
     html: `
     <html>
     <p>Hello Chief</p>
 
-    <p>${from} just verified his Bitcloud Identity
+    <p>${from} just verified his ZenithPay Identity
     </p>
 
     <p>Click <a href="${url}">here</a> to view the document</p>
 
 
     <p>Best wishes,</p>
-    <p>Bitcloud Team</p>
+    <p>ZenithPay Team</p>
 
     </html>
     
