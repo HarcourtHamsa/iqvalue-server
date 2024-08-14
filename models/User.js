@@ -48,6 +48,11 @@ const UsersSchema = new mongoose.Schema({
   isDisabled: {
     type: Boolean,
   },
+  currency: {
+    type: String,
+    enum: ["usd", "gbp", "ngn"],
+    default: "usd",
+  },
 });
 
 module.exports = mongoose.model("users", UsersSchema);

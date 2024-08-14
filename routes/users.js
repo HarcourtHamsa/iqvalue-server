@@ -90,14 +90,16 @@ router.post("/:email/block", async (req, res) => {
   }
 
   try {
-    user.updateOne({
-      isDisabled: true,
-    }).then((_) => {
-      return res.status(200).json({
-        success: true,
-        message: "User Account Disabled",
+    user
+      .updateOne({
+        isDisabled: true,
+      })
+      .then((_) => {
+        return res.status(200).json({
+          success: true,
+          message: "User Account Disabled",
+        });
       });
-    });
   } catch (error) {
     return res.json({
       success: false,
@@ -121,14 +123,16 @@ router.post("/:email/unblock", async (req, res) => {
   }
 
   try {
-    user.updateOne({
-      isDisabled: false,
-    }).then((_) => {
-      return res.status(200).json({
-        success: true,
-        message: "User Account Enabled",
+    user
+      .updateOne({
+        isDisabled: false,
+      })
+      .then((_) => {
+        return res.status(200).json({
+          success: true,
+          message: "User Account Enabled",
+        });
       });
-    });
   } catch (error) {
     return res.json({
       success: false,
@@ -237,6 +241,37 @@ router.post("/:_id/verify", async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+});
+
+/**
+ * @description Gets User by Email
+ * @route `/users/:email/`
+ * @access Private
+ * @type GET
+ * @param {String} email
+ */
+router.get("/:email", async (req, res) => {
+  const { email } = req.params;
+
+  if (!email) {
+    return res.status(400).json({
+      message: "Email is required",
+    });
+  }
+
+  const user = await UsersSchema.findOne({ email });
+
+  if (!user) {
+    return res.status(404).json({
+      message: "Account does not exist",
+      success: false,
+    });
+  }
+
+  return res.json({
+    message: "Account retrieved",
+    data: user,
+  });
 });
 
 module.exports = router;
